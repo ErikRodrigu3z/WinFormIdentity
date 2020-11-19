@@ -115,7 +115,7 @@ namespace WinFormIdentity.Services
                 await _signInManager.SignInAsync(model, isPersistent: false);
             }
             catch (Exception ex)
-            {
+            { 
 
             }
         }
