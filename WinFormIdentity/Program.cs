@@ -1,14 +1,14 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using WinFormIdentity.Models;
+using WinFormIdentity.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.AspNetCore.Identity;
-// instalar nuggets
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using WinFormIdentity.Models;
-using WinFormIdentity.Services;
 
 namespace WinFormIdentity
 {
@@ -24,20 +24,11 @@ namespace WinFormIdentity
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var host = Host.CreateDefaultBuilder()
-                            .ConfigureAppConfiguration((context, builder) =>
-                            {
-                                // Add other configuration files...
-                                //builder.AddJsonFile("appsettings.local.json", optional: true);
-                            })
+            var host = Host.CreateDefaultBuilder()                            
                             .ConfigureServices((services) =>
                             {
                                 ConfigureServices(services);
-                            })
-                            .ConfigureLogging(logging =>
-                            {
-                                // Add other loggers...
-                            })
+                            })                           
                             .Build();
 
 
@@ -45,8 +36,6 @@ namespace WinFormIdentity
             var mainForm = servicess.GetRequiredService<fLogin>();
             Application.Run(mainForm);
         }
-
-
 
         private static void ConfigureServices(IServiceCollection services)
         {
